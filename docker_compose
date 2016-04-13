@@ -1,0 +1,28 @@
+zookeeper:
+  image: jplock/zookeeper:3.4.6
+  restart: always
+  ports:
+  - 2888:2888
+  - 2181:2181
+  - 3888:3888
+  environment:
+  - TZ=Asia/Shanghai
+jboss:
+  image: library/java:openjdk-8-jre
+  command: /jboss-4.2.3.GA/bin/run.sh &
+  net: host
+  restart: always
+  volumes:
+  - /home/wangb/jboss:/jboss-4.2.3.GA
+  environment:
+  - TZ=Asia/Shanghai
+dubbo:
+  image: daocloud.io/yysam/tttt:master-295a8da
+  command: /dubbo-monitor-simple-2.8.4/bin/start.sh &
+  restart: always
+  ports:
+  - 8091:8091
+  volumes:
+  - /home/wangb/dubbo:/dubbo-monitor-simple-2.8.4
+  environment:
+  - TZ=Asia/Shanghai
