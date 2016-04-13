@@ -1,5 +1,7 @@
-FROM java:8-jre
+FROM alpine:latest
 
-RUN apt-get update && apt-get install -y net-tools
+MAINTAINER Jerome Jiang < Jeromefromcn@gmail.com >
 
-CMD bash
+RUN apk add --no-cache --update-cache bash
+
+CMD ["/bin/bash"]
